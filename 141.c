@@ -16,5 +16,6 @@ bool hasCycle(struct ListNode *head) {
         pointer1 = pointer1 -> next;
         pointer2 = pointer2 -> next -> next;
     }
+    
     return true;
 }
