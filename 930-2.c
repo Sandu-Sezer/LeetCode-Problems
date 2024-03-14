@@ -4,13 +4,13 @@ int numSubarraysWithSumHelper(int* nums, int numsSize, int goal){
     int sum = 0;
     int result = 0;
     
-    for (left = 0; left < numsSize; left++){
-        sum += nums[left];
-        while (sum > goal && left >= right){
-            sum -= nums[right];
-            right++;
+    for (right = 0; right < numsSize; right++){
+        sum += nums[right];
+        while (sum > goal && right >= left){
+            sum -= nums[left];
+            left++;
         }
-        result += left - right + 1;
+        result += right - left + 1;
     }
     return result;
 }
