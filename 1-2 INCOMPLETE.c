@@ -22,8 +22,13 @@ int binarySearch(int arr[], int target, int left, int right) {
 }
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
-    int* result = (int*) malloc(numsSize * sizeof(int));
+    int* result = (int*) malloc(2 * sizeof(int));
     int counter = 0;
+    int array[numsSize]; 
+
+    for (int i = 0; i < numsSize; i++){
+        array[i] = nums[i];
+    }
 
     qsort(nums, numsSize, sizeof(int), compare);
 
@@ -35,7 +40,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
 
         if (searchResult != -1){
             result[counter++] = i;
-            result[counter++] = searchResult;
+            result[counter++] = binarySearch(array, nums[searchResult], 0, numsSize);
             break;
         }       
     }
