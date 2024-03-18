@@ -33,15 +33,16 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     qsort(nums, numsSize, sizeof(int), compare);
 
     for (int i = 0; i < numsSize - 1 && nums[0] + nums[i] <= target; i++){
-        int left = i;
+        int left = i + 1;
         int right = numsSize - 1;
         int complement = target - nums[i];
         int searchResult = binarySearch(nums, complement, left, right);
 
-        if (searchResult != -1){
-            result[counter++] = i;
-            result[counter++] = binarySearch(array, nums[searchResult], 0, numsSize);
-            break;
+        if (searchResult != -1){  
+            // array nu e sortat deci nu putem face binary search !!! 
+            result[counter++] = binarySearch(array, nums[i], i, numsSize - 1);
+            result[counter++] = binarySearch(array, nums[searchResult], i, numsSize - 1);
+            break;           
         }       
     }
 
